@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShipStats" load_steps=2 format=3 uid="uid://crod6myas4jps"]
+
+[ext_resource type="Script" path="res://resources/ShipStats.gd" id="1_xmre8"]
+
+[resource]
+script = ExtResource("1_xmre8")
+rotation_speed = 5.0
+acceleration = 1000.0
+max_speed = 1e+06
