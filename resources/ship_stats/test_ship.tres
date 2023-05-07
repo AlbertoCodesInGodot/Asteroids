@@ -7,3 +7,4 @@ script = ExtResource("1_xmre8")
 rotation_speed = 5.0
 acceleration = 1000.0
 max_speed = 1e+06
+friction = 0.01
