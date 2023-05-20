@@ -1,6 +1,13 @@
-class Ship extends CharacterBody2D:
+# Represents In-Game player ship (its visuals and mechanics such as shooting,
+# moving around, etc). Used by upper +Ship+ node to connect ship to in-game inputs
+extends CharacterBody2D
 
-@export var stats: ShipStats
+var stats: ShipStats = null
+
+# INITIALIZATION LOGIC
+# --------------------
+func initialize(instance_stats: ShipStats):
+	stats = instance_stats
 
 # MOVEMENT LOGIC
 # --------------
@@ -21,14 +28,10 @@ func _set_velocity_and_rotation(delta: float, input_vector: Vector2):
 	_set_velocity(delta, input_vector.y)
 	_apply_friction()
 
-# INPUT HANDLING
-# --------------
-func _input_handling(delta):
-	# TODO: refactor to a common input handling vector
-	_set_velocity_and_rotation(delta, Input.get_vector("ui_left", "ui_right", "ui_down", "ui_up"))
+func move(delta: float, input_vector: Vector2):
+	_set_velocity_and_rotation(delta, input_vector)
 
 # PHYSICS PROCESSING
 # ------------------
 func _physics_process(delta: float) -> void:	
-	_input_handling(delta)
 	move_and_slide()
