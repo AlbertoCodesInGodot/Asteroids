@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7lde6abxjnwf"]
+
+[ext_resource type="Script" path="res://scenes/ShipLaser.gd" id="1_1i00m"]
+[ext_resource type="Texture2D" uid="uid://ok4k5f8ylmpt" path="res://assets/sprites/bullet.png" id="1_hp3f4"]
+[ext_resource type="Script" path="res://scenes/InGameLaser.gd" id="2_wwu4n"]
+[ext_resource type="PackedScene" uid="uid://dfq0feb2f73u7" path="res://scenes/utils/ScreenWrapper.tscn" id="3_fivxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0jcy"]
+size = Vector2(2, 2)
+
+[node name="ShipLaser" type="Node2D"]
+script = ExtResource("1_1i00m")
+
+[node name="InGameLaser" type="Area2D" parent="."]
+script = ExtResource("2_wwu4n")
+
+[node name="LaserSprite" type="Sprite2D" parent="InGameLaser"]
+texture = ExtResource("1_hp3f4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InGameLaser"]
+shape = SubResource("RectangleShape2D_i0jcy")
+
+[node name="ScreenWrapper" parent="." instance=ExtResource("3_fivxr")]
+
+[node name="EndTimer" type="Timer" parent="."]
